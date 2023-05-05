@@ -46,12 +46,12 @@ const learnMore = (intl, url = '#') => (
     {intl.formatMessage(messages.learnMore)}
   </a>
 );
-const insightsDashboard = (intl, chrome) => (
+const insightsDashboard = (intl) => (
   <Button
     className="ins-c-dashboard-link"
     component="a"
     variant="primary"
-    href={`${chrome.isBeta() ? '/preview' : ''}/insights`}
+    href="https://console.redhat.com/insights/"
   >
     {intl.formatMessage(messages.viewInsightsDashboard)}
   </Button>
@@ -83,21 +83,21 @@ const registerRHSMInsightsCodeSnippet = (
   </ClipboardCopy>
 );
 
-const rhelNoAutomationSnippet = (intl, chrome) => (
+const rhelNoAutomationSnippet = (intl) => (
   <React.Fragment>
     {registerInsightsCodeSnippet}
-    {insightsDashboard(intl, chrome)}
+    {insightsDashboard(intl)}
   </React.Fragment>
 );
 
-const manualInstall = (intl, chrome) => (
+const manualInstall = (intl) => (
   <React.Fragment>
     {installInsightsCodeSnippet}
-    {rhelNoAutomationSnippet(intl, chrome)}
+    {rhelNoAutomationSnippet(intl)}
   </React.Fragment>
 );
 
-const schema = (intl, chrome) => ({
+const schema = (intl) => ({
   fields: [
     {
       component: componentTypes.RADIO,
@@ -177,7 +177,7 @@ const schema = (intl, chrome) => ({
         <Group type="form-step">
           <TextContent>
             {stepTitle(intl, intl.formatMessage(messages.installTheClient), 2)}
-            {manualInstall(intl, chrome)}
+            {manualInstall(intl)}
           </TextContent>
         </Group>
       ),
@@ -198,7 +198,7 @@ const schema = (intl, chrome) => ({
               intl.formatMessage(messages.registerYourSystems),
               2
             )}
-            {rhelNoAutomationSnippet(intl, chrome)}
+            {rhelNoAutomationSnippet(intl)}
           </TextContent>
         </Group>
       ),
@@ -281,7 +281,7 @@ const schema = (intl, chrome) => ({
         {
           component: 'plain-text',
           name: 'insights-link',
-          label: insightsDashboard(intl, chrome),
+          label: insightsDashboard(intl),
         },
       ],
       condition: [
@@ -330,7 +330,7 @@ const schema = (intl, chrome) => ({
               <Title headingLevel="h3" size="md">
                 {intl.formatMessage(messages.manualInstall)}
               </Title>
-              {manualInstall(intl, chrome)}
+              {manualInstall(intl)}
             </TextContent>
           </Group>
         </React.Fragment>
@@ -385,7 +385,7 @@ const schema = (intl, chrome) => ({
             <Text component={TextVariants.p}>
               {intl.formatMessage(messages.puppetAutomatedInstallMoInfo)}
             </Text>
-            {insightsDashboard(intl, chrome)}
+            {insightsDashboard(intl)}
           </TextContent>
         </Group>
       ),
@@ -489,7 +489,7 @@ const schema = (intl, chrome) => ({
                   </TextListItem>
                 </TextList>
               </ExpandableSection>
-              {insightsDashboard(intl, chrome)}
+              {insightsDashboard(intl)}
             </TextContent>
           </Group>
         </React.Fragment>
@@ -571,7 +571,7 @@ const schema = (intl, chrome) => ({
           <Title headingLevel="h3" size="md">
             {intl.formatMessage(messages.registerInsightsClient)}
           </Title>
-          {rhelNoAutomationSnippet(intl, chrome)}
+          {rhelNoAutomationSnippet(intl)}
         </React.Fragment>
       ),
       condition: [
@@ -705,7 +705,7 @@ const Satellite = ({ intl }) => (
         {intl.formatMessage(messages.combineTheFlexible)}
         {learnMore(
           intl,
-          'https://www.redhat.com/en/technologies/management/smart-management'
+          'https://www.redhat.com/en/technologies/management/satellite'
         )}
       </Text>
     </TextContent>
